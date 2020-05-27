@@ -9,6 +9,7 @@ import { User } from 'src/app/shared/models/user';
 })
 export class UsersService {
   url = 'https://jsonplaceholder.typicode.com/users';
+  public user: User;
 
   constructor(public http: HttpClient) { }
 
@@ -17,5 +18,13 @@ export class UsersService {
     return this.http.get<any>(url).pipe(map(response => response))
       .pipe(map(users => users.map(user => new User(user)))
     );
+  }
+
+  getUser() {
+    return this.user;
+  }
+
+  public setUser(user: User) {
+    this.user = user;
   }
 }

@@ -1,1 +1,4 @@
-<p>home works!</p>
+
+<div *ngFor="let user of users" class="list-group-item list-group-item-action">
+  <span>{{ user.company.name }}</span> <span>{{ user.name }}</span> <span>{{ user.email }}</span>
+</div>

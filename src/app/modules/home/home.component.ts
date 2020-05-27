@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/core/services/users.service';
 import { User } from 'src/app/shared/models/user';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +13,12 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.usersService.getUsers().subscribe(users => this.users = users);
+    this.route.data.subscribe(data => this.users = data.users);
   }
 
 }
