@@ -19,7 +19,11 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {this.users = _.groupBy(data.users, 'company.name'); console.log(this.users)});
+    this.route.data.subscribe(data => this.users = _.groupBy(data.users, 'company.name'));
+  }
+
+  toDetailsPage() {
+    this.router.navigate(['detalhes']);
   }
 
 }
